@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=4, initial-scale=1.0">
+  <title>StarBhak Market</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    crossorigin="anonymous">
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+  <style>
+    /* Apply Josefin Sans font to all text elements */
+    *{
+      font-family: 'Lobster', cursive;
+      margin: 0;
+      padding: 0;
+      scroll-padding-top: 2rem;
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+      list-style: none;
+      text-decoration: none!important;
+    }
+
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+    }
+
+    #sidebar {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 360px;
+      min-height: 100vh;
+      padding: 20px;
+      transition: 0.3s;
+      margin-top: 3%;
+    }
+
+    #sidebar.active {
+      left: 0;
+    }
+
+    .nav2 {
+      margin-top: 6rem;
+      margin-left: 13%;
+      width: 76%
+    }
+
+    body,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    a,
+    button,
+    input,
+    select,
+    option,
+    navbar,
+    card-text,
+
+    .card {
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 0 20px rgba(0, 115, 255, 0.2);
+      transform: scale(1.1);
+    }
+
+    #button {
+      background-color: #ffffff; 
+      border-color: #1c599a;
+      box-shadow: 0 4px 6px rgba(43, 92, 226, 0.1); 
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    #button:hover {
+      background-color: #1c599a;
+      border-color: #1c599a;
+      color: #ffffff;
+    }
+
+    #cart-icon:hover {
+      transform: scale(1.1);
+    }
+
+
+  </style>
+
+</head>
+
+<body>
+  <!-- header -->
+  <header>
+    <nav class="navbar" style="background-color: rgb(0, 111, 171);">
+      <div class="container-fluid">
+        <span class="navbar-brand mb-0 h1" style="color: white;"><p style="color: rgb(122, 222, 255); float: left; margin-right: 5px;">STARBHAK</p> Mart</span>
+      </div>
+    </nav>
+
+    <div class="d-flex flex-column w-25 gap-3" style="padding: 10px 0 10px 10px;" id="sidebar">
+      <div class="card flex gap-3 p-2 w-100" style="background-color: #1c599a;">
+        <i class='bx bx-x' id="close-cart" style="font-size: 1.5rem;"></i>
+        <select class="form-select bg-warning text-black text-center">
+
+          <option>Dine In</option>
+          <option>take away</option>
+
+        </select>
+        <button type="button" class="btn btn-warning" style="width: 100%; height: 50px; border-radius: 1px; border-color: #ffffff;"><img
+            src="assets/CS.png" style="width: 30px; height: 40px; border-color: #ffffff;">Kenzie Ahmad .H</button>
+      </div>
+
+      <!-- table -->
+      <div class="card bg-secondary" style="height: 400px;">
+        <div class="container" style=" height: 400px;overflow: auto;">
+          <br>
+          <ol class="list-group list-group-numbered" id="cart">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Egg Sandwich</h5>
+                35.000
+              </div>
+              <div>Quantity : <span id="quantity">1</span></div>
+            </li>
+            <button id="rem1">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart2">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Beef Burger</h5>
+                45.000
+              </div>
+              <p>Quantity : <span id="quantity2">1</span></p>
+            </li>
+            <button id="rem2">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart3">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Schnitzel</h5>
+                40.000
+              </div>
+              <p>Quantity : <span id="quantity3">1</span></p>
+            </li>
+            <button id="rem3">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart4">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Pretzels</h5>
+                35.000
+              </div>
+              <p>Quantity : <span id="quantity4">1</span></p>
+            </li>
+            <button id="rem4">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart5">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Hot Dog</h5>
+                25.000
+              </div>
+              <p>Quantity : <span id="quantity5">1</span></p>
+            </li>
+            <button id="rem5">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart6">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Bratwurst</h5>
+                50.000
+              </div>
+              <p>Quantity : <span id="quantity6">1</span></p>
+            </li>
+            <button id="rem6">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart7">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Pizza</h5>
+                80.000
+              </div>
+              <p>Quantity : <span id="quantity7">1</span></p>
+            </li>
+            <button id="rem7">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart8">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Coke</h5>
+                10.000
+              </div>
+              <p>Quantity : <span id="quantity8">1</span></p>
+            </li>
+            <button id="rem8">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart9">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Ice Cream</h5>
+                15.000
+              </div>
+              <p>Quantity : <span id="quantity9">1</span></p>
+            </li>
+            <button id="rem9">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart10">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Cappucino</h5>
+                18.000
+              </div>
+              <p>Quantity : <span id="quantity10">1</span></p>
+            </li>
+            <button id="rem10">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart11">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Iced Tea</h5>
+                5.000
+              </div>
+              <p>Quantity : <span id="quantity11">1</span></p>
+            </li>
+            <button id="re112">Hapus pesanan</button>
+          </ol>
+
+          <br>
+          <ol class="list-group list-group-numbered" id="cart12">
+            <li class="list-group-item d-flex justify-content-between align-items-start item" data-price="10">
+              <div class="ms-2 me-auto">
+                <h5>Lemon Tea</h5>
+                4.000
+              </div>
+              <p>Quantity : <span id="quantity12">1</span></p>
+            </li>
+            <button id="rem12">Hapus pesanan</button>
+          </ol>
+
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-body" style="margin-left: 10px; margin-top: -15px; width: 100%;">
+          <p>Pajak : 10%</p>
+          <p>Total harga : $<span id="tax">0.00</span></p>
+        </div>
+      </div>
+    </div>
+    
+  </header>
+
+
+
+  <div class="d-flex w-100">
+    <div class="">
+
+      <nav class="d-flex nav2 navbar-light bg-primary px-4">
+        <a class="navbar-brand" style="color: white;">Menu List</a>
+      </nav>
+
+
+
+      <div class="col-md-1" style="z-index: 2; margin-left: 10%; width: 90%;">
+        <!-- konten makanan -->
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://joyfoodsunshine.com/wp-content/uploads/2022/11/breakfast-egg-sandwich-recipe-9.jpg"
+            class="card-img-top" id="clickableImage">
+          <div class="card-body">
+            <p class="card-text" id="infoItm">Egg Sandwich</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga">35000</span></h5>
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img
+            src="https://images.tokopedia.net/img/cache/700/VqbcmM/2020/12/10/5ad63f57-1dc3-4f16-bc34-82018bf21b32.jpg.webp"
+            class="card-img-top" id="clickableImage2">
+          <div class="card-body">
+            <p class="card-text" id="infoItm2">Beef Burger</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga2">45000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img
+            src="https://img.kurio.network/OJ0b65FzXCsN10ZK9KY0qOkXrNE=/320x320/filters:quality(80)/https://kurio-img.kurioapps.com/21/03/08/4d6e9074-8c05-4bbf-b98c-e25d6ad4cf4b.jpe"
+            class="card-img-top" id="clickableImage3">
+          <div class="card-body">
+            <p class="card-text" id="infoItm3">Schnitzel</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga3">40000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img
+            src="https://assets.epicurious.com/photos/64552fcb023ad8b411206d2d/1:1/w_2560%2Cc_limit/Everything%2520Breakfast%2520Pretzels-RECIPE.jpg"
+            class="card-img-top" id="clickableImage4">
+          <div class="card-body">
+            <p class="card-text" id="infoItm4">Pretzels</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga4">35000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img
+            src="https://www.gardengourmet.com/sites/default/files/recipes/83393badc124840730cb91e3cd839b93_220516_gg_q3_recipe_hotdogs_v3.jpg"
+            class="card-img-top" id="clickableImage5">
+          <div class="card-body">
+            <p class="card-text" id="infoItm5">Hot Dog</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga5">25000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://tillmansmeats.com/cdn/shop/products/096---Bratwurst_2048x.jpg?v=1560267092"
+            class="card-img-top" id="clickableImage6">
+          <div class="card-body">
+            <p class="card-text" id="infoItm6">Bratwurst</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga6">50000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://cdn.loveandlemons.com/wp-content/uploads/2023/02/vegetarian-pizza.jpg" class="card-img-top"
+            id="clickableImage7">
+          <div class="card-body">
+            <p class="card-text" id="infoItm7">Pizza</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga7">80000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://pzaz.com/cdn/shop/articles/sprite-caffeine-content.jpg?v=1667513138" class="card-img-top"
+            id="clickableImage8">
+          <div class="card-body">
+            <p class="card-text" id="infoItm8">Coke</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga8">10000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://cdn.loveandlemons.com/wp-content/uploads/2023/06/homemade-ice-cream.jpg"
+            class="card-img-top" id="clickableImage9">
+          <div class="card-body">
+            <p class="card-text" id="infoItm9">Ice Cream</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga9">15000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img
+            src="https://www.tasteofhome.com/wp-content/uploads/2018/01/exps37407_THE1213734_37407_WEB.jpg?fit=700%2C1024"
+            class="card-img-top" id="clickableImage10">
+          <div class="card-body">
+            <p class="card-text" id="infoItm10">Cappucino</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga10">18000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://www.ohhowcivilized.com/wp-content/uploads/iced-black-tea-recipe.jpg" class="card-img-top"
+            id="clickableImage11">
+          <div class="card-body">
+            <p class="card-text" id="infoItm11">Iced Tea</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga11">5000</span>
+            </h5>
+
+          </div>
+        </div>
+
+        <div class="card" style="width: 10rem; float: left; margin-left: 3%; margin-top: 2%; border-radius: 50px;">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTdijUiH66ehDaOmmYa4s9EQLf691GRoX5o3A&usqp=CAU"
+            class="card-img-top" id="clickableImage12">
+          <div class="card-body">
+            <p class="card-text" id="infoItm12">Lemon Tea</p>
+            <h5 class="card-title" style="float: left; margin-right: 40%;">Rp.<span id="harga12">8000</span>
+            </h5>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="w-100 d-flex justify-content-end p-2">
+    <i class='bx bx-cart' id="cart-icon" style="font-size: 3rem; cursor: pointer!important; margin-top: 6px; color: rgb(0, 0, 0); margin-right: 85%;"></i>
+    <button class="btn px-5" id="button" onclick="exportToTxt()" style="border-radius: 15px;">Pesan Sekarang!</button>
+  </div>
+
+</body>
+<script src="fungsi.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+
+</html>
